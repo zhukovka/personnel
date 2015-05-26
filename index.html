@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personnel</title>
+    <link rel="stylesheet" href="static/styles/foundation/css/foundation.min.css">
+    <link rel="stylesheet" href="static/styles/styles.css">
+    <script src="http://code.jquery.com/jquery-git1.min.js"></script>
+    <script src="static/js/libs/handlebars-v3.0.3.js"></script>
+    <script type="text/javascript" src="static/js/libs/fusioncharts-suite-xt/js/fusioncharts.js"></script>
+    <script type="text/javascript" src="static/js/libs/fusioncharts-suite-xt/js/themes/fusioncharts.theme.zune.js"></script>
+    <script src="data.js"></script>
+    <script src="static/js/View.js"></script>
+    <script src="static/js/PersonnelView.js"></script>
+    <script src="static/js/WorkerView.js"></script>
+    <script src="static/js/script.js"></script>
+    
+
+    <script type="text/x-handlebars" id="workerTemplate">
+
+        <div class="large-4 columns worker-chart" id="chart{{name}}{{lastname}}">
+            no chart
+        </div>
+        <div class="large-3 columns worker-photo">
+            <img src="static/images/quality/{{imgPath}}" alt="">
+        </div>
+        <div class="large-5 columns worker-info">
+            <p class="worker-info-name">{{name}} {{lastname}}</p>
+            <p class="worker-info-position">{{position}}</p>
+            {{#if subdivision}}
+                <p class="worker-info-subdivision">{{subdivision}}</p>
+            {{else}}
+                <p class="worker-info-department">{{department}}</p>
+            {{/if}}
+
+        </div>
+    </script>
+</head>
+<body>
+    <div id="filter">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="small-3 columns">
+                      <label for="team-filter" class="right inline">Team</label>
+                    </div>
+                    <div class="small-6 end columns">
+                      
+                        <select id="team-filter">
+                          <option value="all">All</option>
+                          <option value="Quality">Quality</option>
+                          <option value="Software">Software</option>
+                        </select>
+                    </div>
+                  </div>
+            </div>
+          </div>
+    </div>
+    <hr>
+    <div id="personnel" class="personnel">
+        
+    </div>
+   
+</body>
+</html>
