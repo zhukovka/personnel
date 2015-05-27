@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Personnel</title>
     <link rel="stylesheet" href="static/styles/foundation/css/foundation.min.css">
+    <link rel="stylesheet" media="screen" href="http://handsontable.com/dist/handsontable.full.css">
     <link rel="stylesheet" href="static/styles/styles.css">
+
     <script src="http://code.jquery.com/jquery-git1.min.js"></script>
     <script src="static/js/libs/handlebars-v3.0.3.js"></script>
-    <script type="text/javascript" src="static/js/libs/fusioncharts-suite-xt/js/fusioncharts.js"></script>
-    <script type="text/javascript" src="static/js/libs/fusioncharts-suite-xt/js/themes/fusioncharts.theme.zune.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://handsontable.com/dist/handsontable.full.js"></script>
+    <script src="static/js/libs/moment.min.js"></script>
     <script src="data.js"></script>
     <script src="static/js/View.js"></script>
     <script src="static/js/PersonnelView.js"></script>
@@ -18,7 +21,7 @@
 
     <script type="text/x-handlebars" id="workerTemplate">
 
-        <div class="large-4 columns worker-chart" id="chart{{name}}{{lastname}}">
+        <div class="large-4 columns worker-chart" id="chart{{chartname}}">
             no chart
         </div>
         <div class="large-3 columns worker-photo">
@@ -35,8 +38,13 @@
 
         </div>
     </script>
+    <script type="text/x-handlebars" id="popupTemplate">
+        
+        <div class="popup">OPAPA</div>
+    </script>
 </head>
 <body>
+
     <div id="filter">
         <div class="row">
             <div class="large-12 columns">
@@ -57,6 +65,11 @@
           </div>
     </div>
     <hr>
+    <div class="task-popup">
+        <div id="taskdetails">
+            
+        </div>
+    </div>
     <div id="personnel" class="personnel">
         
     </div>

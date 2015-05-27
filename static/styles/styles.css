@@ -73,3 +73,16 @@ p {
 .lineworker .worker-info-subdivision {
   display: none;
 }
+#taskdetails {
+  position: absolute;
+  width: 50%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.task-progress {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: orange;
+}

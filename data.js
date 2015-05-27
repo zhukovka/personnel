@@ -8,7 +8,20 @@ var data = [{
     "tasks": {
         "done": 4,
         "inprogress": 3,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "2",
     "name": "Walter",
@@ -21,7 +34,20 @@ var data = [{
         "done": 7,
         "inprogress": 2,
         "overdue": 1,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "3",
     "name": "Conor",
@@ -33,7 +59,20 @@ var data = [{
     "tasks": {
         "done": 1,
         "inprogress": 6,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "4",
     "name": "Cian",
@@ -46,7 +85,20 @@ var data = [{
         "done": 4,
         "inprogress": 1,
         "overdue": 1,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "5",
     "name": "Liam",
@@ -58,7 +110,20 @@ var data = [{
     "tasks": {
         "done": 3,
         "inprogress": 2,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "6",
     "name": "Michael",
@@ -70,7 +135,20 @@ var data = [{
     "tasks": {
         "done": 1,
         "inprogress": 5,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "7",
     "name": "Daniel",
@@ -81,7 +159,20 @@ var data = [{
     "subdivision": "L 586",
     "tasks": {
         "done": 3,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "8",
     "name": "Ian",
@@ -92,7 +183,20 @@ var data = [{
     "subdivision": "L 586",
     "tasks": {
         "done": 1,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "9",
     "name": "Emily",
@@ -112,7 +216,20 @@ var data = [{
     "tasks": {
         "done": 1,
         "inprogress": 1,
-    }
+    },
+    "taski": [{
+        "id": "A1",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,24",
+        "dueDate": "2015,06,10"
+    }, {
+        "id": "A2",
+        "description": "ololo",
+        "completed": "50%",
+        "startDate": "2015,05,27",
+        "dueDate": "2015,06,12"
+    }]
 }, {
     "id": "11",
     "name": "notCarlos",

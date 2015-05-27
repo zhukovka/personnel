@@ -47,7 +47,8 @@ PersonnelView.prototype.renderCollection = function(collection) {
     this.$el.html('');
     var subdivisionsDiv, teamFragment, directorDiv,
         template = this.template,
-        renderedIDs = [];
+        renderedWorkerViews = [];
+
 
     Object.keys(collection).forEach(function(team, index) {
         teamFragment = document.createDocumentFragment();
@@ -58,7 +59,7 @@ PersonnelView.prototype.renderCollection = function(collection) {
         $(subdivisionsDiv).addClass('subdivisions row');
         $(directorDiv).addClass('director');
         $(directorDiv).append(collection[team].director.render(template));
-        renderedIDs.push(collection[team].director.id);
+        renderedWorkerViews.push(collection[team].director);
 
         $(teamFragment).append(directorDiv);
 
@@ -68,14 +69,14 @@ PersonnelView.prototype.renderCollection = function(collection) {
                 workersDiv = document.createElement('div');
             $(managerDiv).addClass('linemanager large-' + 12 / subdivisions.length + ' columns');
             $(managerDiv).append(collection[team].subdivisions[subdivision].lineManager.render(template));
-            renderedIDs.push(collection[team].subdivisions[subdivision].lineManager.id);
+            renderedWorkerViews.push(collection[team].subdivisions[subdivision].lineManager);
 
             $(workersDiv).addClass('lineworkers');
 
             collection[team].subdivisions[subdivision].lineWorkers.forEach(function(worker, index) {
                 worker.$el.addClass('lineworker');
                 $(workersDiv).append(worker.render(template));
-                renderedIDs.push(worker.id);
+                renderedWorkerViews.push(worker);
 
             });
 
@@ -88,5 +89,9 @@ PersonnelView.prototype.renderCollection = function(collection) {
         this.$el.append(teamFragment);
     }, this);
 
-    return renderedIDs;
+    renderedWorkerViews.forEach(function(view, index) {
+        view.renderChart();
+    });
+
+    return renderedWorkerViews;
 };

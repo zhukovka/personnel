@@ -1,40 +1,33 @@
 jQuery(document).ready(function($) {
-
+    PopupView.template = $('#popupTemplate').html();
     var personnelView = new PersonnelView({
         collection: data,
         el: $('#personnel'),
         template: $('#workerTemplate').html()
     });
-    var collection = personnelView.collection;
-    personnelView.renderCollection(personnelView.collection);
+    var collection = personnelView.collection,
+        renderedWorkerViews;
+
+    renderedWorkerViews = personnelView.renderCollection(personnelView.collection);
 
     $('#team-filter').change(function(event) {
         /* Act on the event */
-        var filter = $(this).find('option:selected').val(),
-            renderedIDs;
+        var filter = $(this).find('option:selected').val();
         if (filter == 'all') {
-            renderedIDs = personnelView.renderCollection(collection);
+            renderedWorkerViews = personnelView.renderCollection(collection);
         } else {
             var filteredCollection = {};
             filteredCollection[filter] = collection[filter];
-            renderedIDs = personnelView.renderCollection(filteredCollection);
-        }
-        console.log('this', filter);
-        var i = 0;
-        for (; id = renderedIDs[i++];) {
-            if (FusionCharts.items[id]) {
-                FusionCharts.items[id].render();
-            }
-        };
-
-    });
-
-
-    console.log(personnelView);
-
-    FusionCharts.ready(function() {
-        for (var item in FusionCharts.items) {
-            FusionCharts(item).render();
+            renderedWorkerViews = personnelView.renderCollection(filteredCollection);
         }
     });
+
+    $('body').on('click', function(event) {
+        event.preventDefault();
+        console.log('Body', event);
+        console.log($(this).find('#taskdetails:visible'));
+        // $(this).find('#taskdetails:visible').hide();
+        /* Act on the event */
+    });
+
 });
