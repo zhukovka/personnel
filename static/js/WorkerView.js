@@ -57,8 +57,6 @@ function WorkerView(opts) {
                     size: 100,
                     startAngle: 0,
                     endAngle: 360 * Math.min(totalTasks / 10, 1),
-
-                    // center: ['50%', '75%']
                 }
             },
             series: [{
@@ -97,10 +95,15 @@ function WorkerView(opts) {
     if (this.model.taski) {
         var calendarStart = +moment(),
             calendarEnd = +moment(),
-            taskDays = [],
-            dayNames = [""],
-            dayNumbers = [""];
-        this.dailyData = [dayNames, dayNumbers];
+            taskDays = [];
+        /*dayNames = [""],
+        dayNumbers = [""];*/
+        this.dailyData = {
+            dayNames: ["id"],
+            dayNumbers: [""],
+            taskIDs: [""],
+            taskProgress: []
+        };
 
         this.model.taski.forEach(function(task, index) {
             var startDate = moment(task['startDate']);
@@ -108,7 +111,8 @@ function WorkerView(opts) {
             calendarStart = Math.min(calendarStart, +startDate);
             calendarEnd = Math.max(calendarEnd, +dueDate);
             var days = dueDate.diff(startDate, 'days');
-            this.dailyData.push([task.id]);
+            this.dailyData.taskProgress.push(['<span class="dragging-handler">' + task.id + '</span>']);
+            this.dailyData.taskIDs.push(task.id);
         }, this);
 
         calendarStart = moment(calendarStart);
@@ -120,17 +124,17 @@ function WorkerView(opts) {
             days--;
         }
 
-        taskDays.forEach(function(day, index) {
+        taskDays.forEach(function(day, index, array) {
             var momDay = moment(day);
-            dayNames.push(momDay.format('dd'));
-            dayNumbers.push(momDay.date());
+            this.dailyData.dayNames.push(momDay.format('dd'));
+            this.dailyData.dayNumbers.push(momDay.date());
             this.model.taski.forEach(function(task, i) {
                 var startDate = moment(task['startDate']);
                 var dueDate = moment(task['dueDate']);
                 if (momDay.isBefore(startDate) || momDay.isAfter(dueDate)) {
-                    this.dailyData[(this.dailyData.length - 1) - i].push('');
+                    this.dailyData.taskProgress[i].push('');
                 } else {
-                    this.dailyData[(this.dailyData.length - 1) - i].push('<span class="task-progress"></span>');
+                    this.dailyData.taskProgress[i].push('<span class="task-progress"></span>');
                 }
             }, this);
         }, this);
@@ -139,17 +143,15 @@ function WorkerView(opts) {
     this.$el.on('click', '.worker-photo', function(event) {
         event.preventDefault();
         /* Act on the event */
-        console.log('ev', event);
-        $(this).addClass('clicked');
-        // $(this).append(PopupView.render());
-        // $('#taskdetails').highcharts(PopupView.chart);
-        var top = $(this).offset().top;
-        var popup = PopupView.render(self.dailyData).offset({
-            top: top,
-            left: 0
-        });
-
-        // console.log('this offset', );
+        if (self.model.taski) {
+            $(this).addClass('clicked');
+            console.log($(this));
+            var top = $(this).offset().top;
+            var popup = PopupView.render(self.dailyData).offset({
+                top: top,
+                left: 0
+            });
+        }
     });
 }
 

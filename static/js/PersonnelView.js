@@ -43,7 +43,6 @@ function PersonnelView(opts) {
 // PersonnelView.prototype = Object.create(View);
 
 PersonnelView.prototype.renderCollection = function(collection) {
-    console.log('collection', collection);
     this.$el.html('');
     var subdivisionsDiv, teamFragment, directorDiv,
         template = this.template,

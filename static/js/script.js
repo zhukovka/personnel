@@ -22,12 +22,13 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('body').on('click', function(event) {
+    $('body').on('mouseup', function(event) {
         event.preventDefault();
-        console.log('Body', event);
-        console.log($(this).find('#taskdetails:visible'));
-        // $(this).find('#taskdetails:visible').hide();
-        /* Act on the event */
+        var popup = $(this).find('#taskdetails:visible');
+        if (popup.length && !$(popup).has(event.target).length) {
+            popup.hide();
+        }
     });
+
 
 });

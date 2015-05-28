@@ -13,9 +13,17 @@ PopupView = {
         return $(this.el);
     },
     render: function(dailyData) {
-        var cols = [];
+
+        var popup = $('#taskdetails'),
+            cols = [],
+            removed = false,
+            row = 0,
+            data = [dailyData.dayNumbers].concat(dailyData.taskProgress);
+
+        popup.show();
+
         if (dailyData) {
-            for (var i = 0; i < dailyData[0].length; i++) {
+            for (var i = 0; i < dailyData.dayNames.length; i++) {
                 cols.push({
                     renderer: "html"
                 });
@@ -29,20 +37,70 @@ PopupView = {
             td.style.background = '#CEC';
         }
 
-        $('#taskdetails').handsontable({
-            data: dailyData,
+        popup.handsontable({
+            data: data,
             // minSpareRows: 1,
-            rowHeaders: true,
+            // rowHeaders: true,
+            colHeaders: dailyData.dayNames,
             cells: function(row, col, prop) {
                 var cellProperties = {};
                 if (row === 0) {
                     cellProperties.renderer = firstRowRenderer; // uses function directly
+                } else if (row < data.length) {
+                    cellProperties.renderer = 'html';
                 }
                 return cellProperties;
             },
-            columns: cols,
+            // columns: cols,
             contextMenu: true,
-            width: 200
+            width: 200,
+            // manualColumnMove: true,
+            // manualRowMove: true,
+            disableVisualSelection: true,
+
+            afterRender: function(e) {
+                var self = this;
+                var tbody = $(this.rootElement).find('.htCore tbody').first();
+                console.log('rendered', this);
+                tbody.sortable({
+                    // helper: fixHelperModified,
+                    connectWith: tbody,
+                    handle: ".dragging-handler",
+                    sort: function(event, ui) {
+
+                        if (ui.offset.top >= $(this).height() - ui.item.height() + $(this).offset().top) {
+                            if (!removed) {
+
+                                console.log('selfcountRows()', self.countRows());
+
+                                removed = true;
+                            }
+                        }
+                    },
+                    start: function(event, ui) {
+                        row = $('tr').index(ui.item);
+                        console.log('START', row);
+                    },
+                    stop: function(event, ui) {
+                        if (removed) {
+                            ui.item.remove();
+                            removed = false;
+                        }
+                        console.log('STOP');
+                        // if (out) {
+                        //     ui.item.remove();
+                        // } else {
+                        //     // renumber_table('#diagnosis_list');
+                        // }
+                    },
+                    out: function(event, ui) { /*out=true;*/
+                        console.log('OUT');
+                    },
+                    over: function(event, ui) {
+                        console.log('OVER');
+                    }
+                }).disableSelection();
+            }
         });
 
         return $('#taskdetails');
