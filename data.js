@@ -12,25 +12,25 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }, {
         "id": "A3",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,05"
     }, {
         "id": "A4",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,06,07",
         "dueDate": "2015,06,12"
     }]
@@ -50,13 +50,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -75,13 +75,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -101,13 +101,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -126,13 +126,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -151,13 +151,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -175,13 +175,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -199,13 +199,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]
@@ -232,13 +232,13 @@ var data = [{
     "taski": [{
         "id": "A1",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,24",
         "dueDate": "2015,06,10"
     }, {
         "id": "A2",
         "description": "ololo",
-        "completed": "50%",
+        "progress": "0.5",
         "startDate": "2015,05,27",
         "dueDate": "2015,06,12"
     }]

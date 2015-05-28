@@ -99,60 +99,46 @@ function WorkerView(opts) {
         /*dayNames = [""],
         dayNumbers = [""];*/
         this.dailyData = {
-            dayNames: ["id"],
+            dayNames: [""],
             dayNumbers: [""],
-            taskIDs: [""],
+            tasknumber: this.model.taski,
             taskProgress: []
         };
 
         this.model.taski.forEach(function(task, index) {
-            var startDate = moment(task['startDate']);
-            var dueDate = moment(task['dueDate']);
-            calendarStart = Math.min(calendarStart, +startDate);
-            calendarEnd = Math.max(calendarEnd, +dueDate);
-            var days = dueDate.diff(startDate, 'days');
-            this.dailyData.taskProgress.push(['<span class="dragging-handler">' + task.id + '</span>']);
-            this.dailyData.taskIDs.push(task.id);
+            task['startDate'] = moment(task['startDate']);
+            task['dueDate'] = moment(task['dueDate']);
+            calendarStart = Math.min(calendarStart, +task['startDate']);
+            calendarEnd = Math.max(calendarEnd, +task['dueDate']);
+            // var days = task['dueDate'].diff(task['startDate'], 'days');
+            task.days = [];
+            // this.dailyData.taskProgress.push([]);
         }, this);
 
-        calendarStart = moment(calendarStart);
-        calendarEnd = moment(calendarEnd);
+        calendarStart = moment(calendarStart).subtract(1, 'days');
+        calendarEnd = moment(calendarEnd).add(1, 'd');
         var days = calendarEnd.diff(calendarStart, 'days');
         while (days >= 0) {
             taskDays.push(+calendarStart);
+            // var momDay = moment(day);
+            this.dailyData.dayNames.push(calendarStart.format('dd'));
+            this.dailyData.dayNumbers.push(calendarStart.date());
+            this.model.taski.forEach(function(task, i) {
+                if (calendarStart.isBefore(task['startDate']) || calendarStart.isAfter(task['dueDate'])) {
+                    task.days.push('');
+                } else {
+                    task.days.push(+calendarStart);
+                }
+                if (days === 0) {
+                    this.dailyData.taskProgress.push([task.id].concat(task.days).concat([task.id, task.description, '']));
+                }
+            }, this);
             calendarStart.add(1, 'd');
             days--;
         }
-
-        taskDays.forEach(function(day, index, array) {
-            var momDay = moment(day);
-            this.dailyData.dayNames.push(momDay.format('dd'));
-            this.dailyData.dayNumbers.push(momDay.date());
-            this.model.taski.forEach(function(task, i) {
-                var startDate = moment(task['startDate']);
-                var dueDate = moment(task['dueDate']);
-                if (momDay.isBefore(startDate) || momDay.isAfter(dueDate)) {
-                    this.dailyData.taskProgress[i].push('');
-                } else {
-                    this.dailyData.taskProgress[i].push('<span class="task-progress"></span>');
-                }
-            }, this);
-        }, this);
+        this.dailyData.dayNames = this.dailyData.dayNames.concat(['id', 'Task description', '']);
+        this.dailyData.data = [this.dailyData.dayNumbers.concat(['', '', ''])].concat(this.dailyData.taskProgress);
     }
-
-    this.$el.on('click', '.worker-photo', function(event) {
-        event.preventDefault();
-        /* Act on the event */
-        if (self.model.taski) {
-            $(this).addClass('clicked');
-            console.log($(this));
-            var top = $(this).offset().top;
-            var popup = PopupView.render(self.dailyData).offset({
-                top: top,
-                left: 0
-            });
-        }
-    });
 }
 
 WorkerView.prototype = Object.create(View);

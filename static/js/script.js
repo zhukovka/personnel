@@ -26,6 +26,8 @@ jQuery(document).ready(function($) {
         event.preventDefault();
         var popup = $(this).find('#taskdetails:visible');
         if (popup.length && !$(popup).has(event.target).length) {
+            $('.clicked').removeClass('clicked');
+            popup.handsontable('destroy');
             popup.hide();
         }
     });
